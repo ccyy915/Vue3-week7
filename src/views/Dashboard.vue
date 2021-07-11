@@ -1,14 +1,11 @@
 <template>
-  <div id="nav">
-    <router-link to="/">回前台</router-link> |
-    <router-link to="/admin/products">後台產品列表</router-link> |
-    <router-link to="/admin/orders">後台訂單</router-link> |
-    <a href="#" @click.prevent="signOut">登出</a>
-  </div>
+  <Navbar/>
   <router-view v-if="checkSuccess"></router-view>
 </template>
 
 <script>
+import Navbar from '@/components/Navbar.vue';
+
 export default {
   name: "Dashboard",
   data() {
@@ -16,6 +13,7 @@ export default {
       checkSuccess: false,
     };
   },
+  components: { Navbar },
   created() {
     this.checkLogin();
   },
