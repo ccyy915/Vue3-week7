@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">LAX Select</a>
+      <a class="navbar-brand" href="#" @click.prevent>LAX Select</a>
       <button
         class="navbar-toggler"
         type="button"

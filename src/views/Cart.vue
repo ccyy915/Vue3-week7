@@ -3,13 +3,20 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-6">
+        <button
+          :disabled="this.cart.carts?.length === 0"
+          class="btn btn-outline-danger flex-end mb-3"
+          @click="deleteAll()"
+        >
+          清除購物車
+        </button>
         <table class="table align-middle">
           <thead>
             <tr style="text-align: center">
               <th style="width: 100px">刪除</th>
               <th>品名</th>
-              <th style="width: 150px">數量/單位</th>
-              <th style="width: 100px">單價</th>
+              <th>數量/單位</th>
+              <th>單價</th>
             </tr>
           </thead>
           <tbody>
@@ -213,6 +220,15 @@ export default {
           alert(res.data.message);
         }
         this.isLoading = false;
+      });
+    },
+    deleteAll() {
+      this.isLoading = true;
+      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/carts`;
+      this.$http.delete(url).then((res) => {
+        this.isLoading = false;
+        alert(res.data.message);
+        this.getCart();
       });
     },
   },
